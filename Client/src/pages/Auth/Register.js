@@ -2,7 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import FormText from '../../component/formText';
 import Image from '../../images/delivery_girl.svg'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Register = ()=> {
@@ -108,6 +108,7 @@ const Register = ()=> {
                         </Form>
                     )}
                     </Formik>
+                    <p style={{ color: '#000', marginTop: '10px' }}>Already have an account? <Link to="/">Signin</Link> here</p>
                 </div>
             </div>
         </div>

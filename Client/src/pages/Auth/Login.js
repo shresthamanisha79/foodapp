@@ -3,15 +3,21 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Image from '../../images/order.svg'
 import { Link, useNavigate } from 'react-router-dom'
-import { message } from "antd";
+import { Input, message } from "antd";
 // import 'antd/dist/antd.min.css';
 import ShowHidePassword from "../../component/showHidePassword";
 import { setCredentials } from "../../reducersSlice/userSlice";
 import {useDispatch} from 'react-redux'
+import { useEffect, useRef } from "react";
 
 const Login = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+
+	const inputRef = useRef(null)
+	useEffect(()=>{
+		inputRef.current.focus()
+	},[])
 
 	const logParticipants = async (values) => {
 		const requestOptions = {
@@ -71,7 +77,7 @@ const Login = () => {
 						>
 							{({ errors, touched, values, handleChange, handleBlur, handleSubmit }) => (
 								<Form onSubmit={handleSubmit}>
-									<Field name="email" placeholder="Enter Email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
+									<Input ref={inputRef} name="email" placeholder="Enter Email" value={values.email} onChange={handleChange} onBlur={handleBlur} />
 									{errors.email && touched.email ? (<div className="error">{errors.email}</div>) : null}
 
 									<Field name="password" placeholder="Enter Password" value={values.password} component={ShowHidePassword} onChange={handleChange} onBlur={handleBlur} />
@@ -81,7 +87,7 @@ const Login = () => {
 								</Form>
 							)}
 						</Formik>
-						<p style={{ color: '#fff', marginTop: '10px' }}>Dont have an account? <Link to="/register">Signup</Link> here</p>
+						<p style={{ color: '#000', marginTop: '10px' }}>Dont have an account? <Link to="/register">Signup</Link> here</p>
 					</div>
 				</div>
 			</div>
