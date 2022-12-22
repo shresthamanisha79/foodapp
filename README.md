@@ -3,6 +3,7 @@
 
 ## Tech Stack
 * React JS
+* React Styled Component
 * React Router
 * Redux
 * Material Design
